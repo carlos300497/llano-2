@@ -1,15 +1,36 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Ejemplo de datos estáticos, reemplazar con llamada a API real
-    const data = {
-        soilMoisture: '45%',
-        waterLevel: '75%',
-        valveStatus: 'Abiertas'
-    };
+// Configuración de MQTT
+const broker = 'io.adafruit.com';
+const port = 443; // Puerto para conexión segura MQTT
+const username = 'carlos97M'; // Reemplaza con tu nombre de usuario de Adafruit IO
+const aioKey = 'aio_bjDy87R1fy2USxOIgCxqh91gUqtp'; // Reemplaza con tu clave de Adafruit IO
+const topic = `${username}/feeds/Humedad`; // Cambia esto al feed que estés usando
 
-    document.getElementById('soil-moisture').textContent = data.soilMoisture;
-    document.getElementById('water-level').textContent = data.waterLevel;
-    document.getElementById('valve-status').textContent = data.valveStatus;
+// Crear un cliente MQTT
+const client = new Paho.MQTT.Client(broker, port, 'webClient');
 
-    // Aquí puedes agregar lógica para actualizar los datos en tiempo real
-    // usando fetch() para llamar a tu API y actualizar el DOM
+// Función de conexión
+client.connect({
+    userName: username,
+    password: aioKey,
+    onSuccess: onConnect,
+    useSSL: true,
 });
+
+// Función que se ejecuta al conectar
+function onConnect() {
+    console.log('Conectado al broker MQTT');
+    client.subscribe(topic);
+}
+
+// Función que se ejecuta al recibir un mensaje
+client.onMessageArrived = function(message) {
+    console.log('Mensaje recibido:', message.payloadString);
+    document.getElementById('soil-moisture').innerText = message.payloadString;
+};
+
+// Función que se ejecuta al desconectar
+client.onConnectionLost = function(responseObject) {
+    if (responseObject.errorCode !== 0) {
+        console.log('Desconexión de MQTT:', responseObject.errorMessage);
+    }
+};
