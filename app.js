@@ -3,7 +3,7 @@ const broker = 'wss://broker.emqx.io:8084/mqtt'; // URL de WebSocket seguro
 const topic = 'sensor/soilMoisture'; // Tópico MQTT
 
 // Crear un cliente MQTT
-const client = new Paho.MQTT.Client(broker, 'webClient' + Math.random()); // Evita colisiones de ID
+const client = new Paho.MQTT.Client("broker.emqx.io", 8084, "/mqtt");
 
 // Función de conexión
 client.connect({
