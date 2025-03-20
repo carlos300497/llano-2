@@ -9,7 +9,7 @@ const client = new Paho.MQTT.Client("broker.emqx.io", 8084, "/mqtt");
 client.connect({
     onSuccess: onConnect,
     onFailure: onFailure,
-    useSSL: true,
+    useSSL: true
 });
 
 // Función que se ejecuta al conectar
