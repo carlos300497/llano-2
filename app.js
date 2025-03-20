@@ -1,5 +1,5 @@
 // Configuración de MQTT con WebSockets
-const broker = 'wss://test.mosquitto.org:8081/mqtt'; // URL de WebSocket seguro
+const broker = 'wss://broker.emqx.io:8084/mqtt'; // URL de WebSocket seguro
 const topic = 'sensor/soilMoisture'; // Tópico MQTT
 
 // Crear un cliente MQTT
