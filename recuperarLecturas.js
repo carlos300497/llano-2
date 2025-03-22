@@ -1,5 +1,5 @@
 // URL del archivo JSON en el repositorio (reemplaza con el tuyo)
-const GITHUB_RAW_URL = "";
+const GITHUB_RAW_URL = "https://github.com/carlos300497/llano-2/blob/main/app.js";
 
 // Función para cargar datos desde GitHub
 async function loadHumedadData() {
