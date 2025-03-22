@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Riego</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://unpkg.com/eclipse-paho-mqtt@1.1.0/mqttws31.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script src="https://unpkg.com/paho-mqtt@1.1.0/paho-mqtt.js"></script>
     <script src="app.js" defer></script>
-    
 </head>
 <body>
     <header>
@@ -16,11 +16,11 @@
     <main>
         <section id="status">
             <h2>Estado del Sistema</h2>
-            <p>Humedad del Suelo: <span id="soil-moisture">Cargando...</span></p>
-            <p>Nivel de Agua: <span id="water-level">Cargando...</span></p>
-            <p>Estado de las Válvulas: <span id="valve-status">Cargando...</span></p>
+            <p>Temperatura Tablero: <span id="temperaturaTablero">Cargando...</span></p>
+            <p>Humedad Arandanos: <span id="humedadArandano">Cargando...</span></p>
+            <p>Temperatura Rasberry: <span id="temperaturaRasberry">Cargando...</span></p>
+            <canvas id="humedadArandanoChar"></canvas> <!-- ID corregido -->
         </section>
     </main>
-    <script src="app.js" defer></script>
 </body>
 </html>
